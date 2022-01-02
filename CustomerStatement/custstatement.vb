@@ -23,6 +23,7 @@ Friend Class custstatement
             Txttosalm.Text = "zzzzzzzzzzzzzzzzzzzzzz"
             Rbfunc.Checked = True
             rbcw.Checked = True
+            Rbwosm.Checked = True
         Catch ex As Exception
             MessageBox.Show(ex.Message)
             Close()

@@ -50,11 +50,15 @@ Partial Class custstatement
         Me.Butffrmsal = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Txtfrmsalm = New System.Windows.Forms.TextBox()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Rbwosm = New System.Windows.Forms.RadioButton()
+        Me.Rbwsm = New System.Windows.Forms.RadioButton()
         Me.Gbpar.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.SuspendLayout()
         '
         'CMD_Exit
@@ -62,7 +66,7 @@ Partial Class custstatement
         Me.CMD_Exit.BackColor = System.Drawing.SystemColors.Control
         Me.CMD_Exit.Cursor = System.Windows.Forms.Cursors.Default
         Me.CMD_Exit.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CMD_Exit.Location = New System.Drawing.Point(183, 400)
+        Me.CMD_Exit.Location = New System.Drawing.Point(183, 474)
         Me.CMD_Exit.Name = "CMD_Exit"
         Me.CMD_Exit.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.CMD_Exit.Size = New System.Drawing.Size(81, 25)
@@ -239,7 +243,7 @@ Partial Class custstatement
         Me.CMD_OK.BackColor = System.Drawing.SystemColors.Control
         Me.CMD_OK.Cursor = System.Windows.Forms.Cursors.Default
         Me.CMD_OK.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CMD_OK.Location = New System.Drawing.Point(16, 403)
+        Me.CMD_OK.Location = New System.Drawing.Point(16, 477)
         Me.CMD_OK.Name = "CMD_OK"
         Me.CMD_OK.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.CMD_OK.Size = New System.Drawing.Size(81, 25)
@@ -361,11 +365,46 @@ Partial Class custstatement
         Me.Txtfrmsalm.Size = New System.Drawing.Size(186, 20)
         Me.Txtfrmsalm.TabIndex = 1
         '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.Rbwosm)
+        Me.GroupBox5.Controls.Add(Me.Rbwsm)
+        Me.GroupBox5.Font = New System.Drawing.Font("Tahoma", 8.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
+        Me.GroupBox5.Location = New System.Drawing.Point(4, 408)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(279, 62)
+        Me.GroupBox5.TabIndex = 55
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Sales Monthly"
+        '
+        'Rbwosm
+        '
+        Me.Rbwosm.AutoSize = True
+        Me.Rbwosm.Location = New System.Drawing.Point(178, 29)
+        Me.Rbwosm.Name = "Rbwosm"
+        Me.Rbwosm.Size = New System.Drawing.Size(70, 17)
+        Me.Rbwosm.TabIndex = 1
+        Me.Rbwosm.TabStop = True
+        Me.Rbwosm.Text = "Without"
+        Me.Rbwosm.UseVisualStyleBackColor = True
+        '
+        'Rbwsm
+        '
+        Me.Rbwsm.AutoSize = True
+        Me.Rbwsm.Location = New System.Drawing.Point(9, 28)
+        Me.Rbwsm.Name = "Rbwsm"
+        Me.Rbwsm.Size = New System.Drawing.Size(52, 17)
+        Me.Rbwsm.TabIndex = 0
+        Me.Rbwsm.TabStop = True
+        Me.Rbwsm.Text = "with "
+        Me.Rbwsm.UseVisualStyleBackColor = True
+        '
         'custstatement
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(290, 431)
+        Me.ClientSize = New System.Drawing.Size(290, 503)
+        Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.DateTimePicker2)
@@ -388,6 +427,8 @@ Partial Class custstatement
         Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -418,5 +459,7 @@ Partial Class custstatement
     Public WithEvents Butffrmsal As System.Windows.Forms.Button
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Txtfrmsalm As System.Windows.Forms.TextBox
-
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents Rbwosm As RadioButton
+    Friend WithEvents Rbwsm As RadioButton
 End Class

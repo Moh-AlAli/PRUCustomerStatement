@@ -108,6 +108,13 @@ Friend Class crviewer
 
             Dim tdate As String = custstatement.DateTimePicker2.Value.Year & tmonthnew & tdaynew
 
+            Dim smonthly As String = ""
+
+            If custstatement.Rbwsm.Checked = True Then
+                smonthly = "Y"
+            Else
+                smonthly = "N"
+            End If
 
             Readconnectionstring()
 
@@ -169,6 +176,20 @@ Friend Class crviewer
                                 crsubtable.ApplyLogOnInfo(crtableLogoninfo)
                             Next
                         End If
+
+
+                        If subrp.Name = "Salesmonthly" Then
+                            crSubTables = subrp.Database.Tables
+                            For Each crsubtable In crSubTables
+                                crtableLogoninfo = crsubtable.LogOnInfo
+                                subConInfo.ServerName = server
+                                subConInfo.DatabaseName = custstatement.compid
+                                subConInfo.UserID = uid
+                                subConInfo.Password = pass
+                                crtableLogoninfo.ConnectionInfo = subConInfo 'ConInfo.ConnectionInfo
+                                crsubtable.ApplyLogOnInfo(crtableLogoninfo)
+                            Next
+                        End If
                     End If
 
                 Next
@@ -181,6 +202,8 @@ Friend Class crviewer
             rdoc.SetParameterValue("TOcus", custstatement.Txttocus.Text)
             rdoc.SetParameterValue("Frmsal", custstatement.Txtfrmsalm.Text)
             rdoc.SetParameterValue("Tosal", custstatement.Txttosalm.Text)
+            rdoc.SetParameterValue("smonthly", smonthly)
+
             cwvr.ReportSource = rdoc
 
 
