@@ -7,6 +7,7 @@ Imports System.IO
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
+
 Friend Class crviewer
     Private rdoc As New ReportDocument
     Private conrpt As New ConnectionInfo()
@@ -49,7 +50,7 @@ Friend Class crviewer
 
         Return cons
     End Function
-    
+
 
     Private Sub crviewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
@@ -150,7 +151,7 @@ Friend Class crviewer
                         subrpobj = CType(rob, SubreportObject)
                         subrp = subrpobj.OpenSubreport(subrpobj.SubreportName)
                         Dim name As String = subrp.Name
-                     
+
                         If subrp.Name = "salesperson.rpt" Then
                             crSubTables = subrp.Database.Tables
                             For Each crsubtable In crSubTables
@@ -159,7 +160,7 @@ Friend Class crviewer
                                 subConInfo.DatabaseName = custstatement.compid
                                 subConInfo.UserID = uid
                                 subConInfo.Password = pass
-                                crtableLogoninfo.ConnectionInfo = subConInfo 'ConInfo.ConnectionInfo
+                                crtableLogoninfo.ConnectionInfo = subConInfo
                                 crsubtable.ApplyLogOnInfo(crtableLogoninfo)
                             Next
                         End If
@@ -172,7 +173,7 @@ Friend Class crviewer
                                 subConInfo.DatabaseName = custstatement.compid
                                 subConInfo.UserID = uid
                                 subConInfo.Password = pass
-                                crtableLogoninfo.ConnectionInfo = subConInfo 'ConInfo.ConnectionInfo
+                                crtableLogoninfo.ConnectionInfo = subConInfo
                                 crsubtable.ApplyLogOnInfo(crtableLogoninfo)
                             Next
                         End If
@@ -186,7 +187,7 @@ Friend Class crviewer
                                 subConInfo.DatabaseName = custstatement.compid
                                 subConInfo.UserID = uid
                                 subConInfo.Password = pass
-                                crtableLogoninfo.ConnectionInfo = subConInfo 'ConInfo.ConnectionInfo
+                                crtableLogoninfo.ConnectionInfo = subConInfo
                                 crsubtable.ApplyLogOnInfo(crtableLogoninfo)
                             Next
                         End If
@@ -218,12 +219,12 @@ Friend Class crviewer
 
     Friend Function glar() As DataSet
         Dim cmd As New SqlCommand()
-        Dim sql As String = " SELECT GLBATCH,GLENTRY,IDINVC,IDCUST,CNTBTCH,CNTITEM " & _
+        Dim sql As String = " SELECT GLBATCH,GLENTRY,IDINVC,IDCUST,CNTBTCH,CNTITEM " &
                             " FROM  ARPJH  where IDCUST between '" & custstatement.txtfrmcus.Text & "' and '" & custstatement.Txttosalm.Text & "'"
         Dim da As New SqlDataAdapter
         Dim con As New SqlConnection(Readconnectionstring())
         With cmd
-            .CommandText = Sql
+            .CommandText = sql
             .CommandType = CommandType.Text
             .Connection = con
         End With
@@ -235,9 +236,9 @@ Friend Class crviewer
     End Function
     Friend Function arstate(ByVal tdate As Integer) As DataSet
         Dim cmd As New SqlCommand()
-        Dim sql As String = " SELECT DISTINCT AROBL.TRXTYPETXT, AROBL.IDINVC, CSCCD.DECIMALS, AROBL.DATEINVC, AROBL.IDCUST, AROBL.AMTINVCTC, AROBL.DESCINVC, AROBP.TRXTYPE, AROBP.IDMEMOXREF, CSCOM.HOMECUR, AROBP.AMTPAYMHC, AROBL.AMTINVCHC, AROBL.CNTBTCH, AROBL.CNTITEM, AROBP.CNTBTCH, AROBP.CNTITEM, AROBP.IDINVC, AROBL.IDRMIT, ARRRH.TEXTRETRN, AROBP.DATEBUS, ARCUS.IDCUST, ARCUS.NAMECUST, ARTCR.TEXTRMIT, AROBP.IDCUST " & _
-                            " FROM   ARCUS  INNER JOIN CSCOM  ON ARCUS.AUDTORG=CSCOM.ORGID LEFT OUTER JOIN SAMDAT.dbo.AROBL AROBL ON ARCUS.IDCUST=AROBL.IDCUST INNER JOIN SAMDAT.dbo.CSCCD CSCCD ON CSCOM.HOMECUR=CSCCD.CURID LEFT OUTER JOIN SAMDAT.dbo.AROBP AROBP ON AROBL.IDCUST=AROBP.IDCUST AND AROBL.IDINVC=AROBP.IDINVC LEFT OUTER JOIN SAMDAT.dbo.ARTCR ARTCR ON AROBL.CNTBTCH=ARTCR.CNTBTCH AND AROBL.CNTITEM=ARTCR.CNTITEM AND AROBL.IDCUST=ARTCR.IDCUST LEFT OUTER JOIN SAMDAT.dbo.ARRRH ARRRH " & _
-                            " ON AROBP.IDBANK=ARRRH.IDBANK AND AROBP.IDCUST=ARRRH.IDCUST AND AROBP.IDRMIT=ARRRH.IDRMIT AND AROBP.DEPSEQ=ARRRH.DEPSEQ AND AROBP.DEPLINE=ARRRH.DEPLINE AND AROBP.DATERMIT=ARRRH.DATERMIT " & _
+        Dim sql As String = " SELECT DISTINCT AROBL.TRXTYPETXT, AROBL.IDINVC, CSCCD.DECIMALS, AROBL.DATEINVC, AROBL.IDCUST, AROBL.AMTINVCTC, AROBL.DESCINVC, AROBP.TRXTYPE, AROBP.IDMEMOXREF, CSCOM.HOMECUR, AROBP.AMTPAYMHC, AROBL.AMTINVCHC, AROBL.CNTBTCH, AROBL.CNTITEM, AROBP.CNTBTCH, AROBP.CNTITEM, AROBP.IDINVC, AROBL.IDRMIT, ARRRH.TEXTRETRN, AROBP.DATEBUS, ARCUS.IDCUST, ARCUS.NAMECUST, ARTCR.TEXTRMIT, AROBP.IDCUST " &
+                            " FROM   ARCUS  INNER JOIN CSCOM  ON ARCUS.AUDTORG=CSCOM.ORGID LEFT OUTER JOIN SAMDAT.dbo.AROBL AROBL ON ARCUS.IDCUST=AROBL.IDCUST INNER JOIN SAMDAT.dbo.CSCCD CSCCD ON CSCOM.HOMECUR=CSCCD.CURID LEFT OUTER JOIN SAMDAT.dbo.AROBP AROBP ON AROBL.IDCUST=AROBP.IDCUST AND AROBL.IDINVC=AROBP.IDINVC LEFT OUTER JOIN SAMDAT.dbo.ARTCR ARTCR ON AROBL.CNTBTCH=ARTCR.CNTBTCH AND AROBL.CNTITEM=ARTCR.CNTITEM AND AROBL.IDCUST=ARTCR.IDCUST LEFT OUTER JOIN SAMDAT.dbo.ARRRH ARRRH " &
+                            " ON AROBP.IDBANK=ARRRH.IDBANK AND AROBP.IDCUST=ARRRH.IDCUST AND AROBP.IDRMIT=ARRRH.IDRMIT AND AROBP.DEPSEQ=ARRRH.DEPSEQ AND AROBP.DEPLINE=ARRRH.DEPLINE AND AROBP.DATERMIT=ARRRH.DATERMIT " &
                             " WHERE  AROBL.DATEINVC<=" & tdate & " AND AROBL.IDCUST between '" & custstatement.txtfrmcus.Text & "' and '" & custstatement.Txttosalm.Text & "'"
         Dim da As New SqlDataAdapter
         Dim con As New SqlConnection(Readconnectionstring())

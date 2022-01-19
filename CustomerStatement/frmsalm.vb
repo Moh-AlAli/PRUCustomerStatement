@@ -1,21 +1,22 @@
-﻿Imports ACCPAC.Advantage
+﻿'Imports ACCPAC.Advantage
+Imports AccpacCOMAPI
 
 Public Class frmsalm
     Private i As Integer
     Private j As Integer
-    Private os As New Session
-    Private adblink As DBLink
+    'Private os As New Session
+    'Private adblink As DBLink
     Private Sub frmsalm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try
 
-            os.Init("", "AR", "AR0018", "65A")
-            os.OpenWin("", "", "", custstatement.compid, System.DateTime.Now, 0)
-            '   os.Open("ADMIN", "ADMIN", custstatement.compid, System.DateTime.Now, 0)
-            adblink = os.OpenDBLink(DBLinkType.Company, DBLinkFlags.ReadOnly)
+            'os.Init("", "AR", "AR0018", "65A")
+            'os.OpenWin("", "", "", custstatement.compid, System.DateTime.Now, 0)
+            ''   os.Open("ADMIN", "ADMIN", custstatement.compid, System.DateTime.Now, 0)
+            'adblink = os.OpenDBLink(DBLinkType.Company, DBLinkFlags.ReadOnly)
 
-            Dim arv As View
-            arv = adblink.OpenView("AR0018")
+            Dim arv As AccpacView
+            arv = custstatement.xdbcom.OpenView2("AR0018")
 
             Dim arcusds As DataSet = New DataSet("AR")
 
@@ -71,8 +72,8 @@ Public Class frmsalm
 
     Private Sub ButSel_Click(sender As Object, e As EventArgs) Handles ButSel.Click
         Try
-            Dim arv As View
-            arv = adblink.OpenView("AR0018")
+            Dim arv As AccpacView
+            arv = custstatement.xdbcom.OpenView2("AR0018")
             Dim searfil As String = ""
 
             If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
@@ -121,8 +122,8 @@ Public Class frmsalm
     Private Sub Txtsalm_TextChanged(sender As Object, e As EventArgs) Handles Txtsalm.TextChanged
 
 
-        Dim arv As View
-        arv = adblink.OpenView("AR0018")
+        Dim arv As AccpacView
+        arv = custstatement.xdbcom.OpenView2("AR0018")
         Dim searfil As String = ""
         If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
             searfil = "NAMEEMPL Like ""%" + Txtname.Text + "%"" and CODESLSP like ""%" + Txtsalm.Text + "%"" "
@@ -165,9 +166,8 @@ Public Class frmsalm
 
     Private Sub Txtsalm_MouseLeave(sender As Object, e As EventArgs) Handles Txtsalm.MouseLeave
 
-
-        Dim arv As View
-        arv = adblink.OpenView("AR0018")
+        Dim arv As AccpacView
+        arv = custstatement.xdbcom.OpenView2("AR0018")
         Dim searfil As String = ""
         If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
             searfil = "NAMEEMPL Like ""%" + Txtname.Text + "%"" and CODESLSP like ""%" + Txtsalm.Text + "%"" "
@@ -211,8 +211,8 @@ Public Class frmsalm
     Private Sub Txtsalm_MouseMove(sender As Object, e As MouseEventArgs) Handles Txtsalm.MouseMove
 
 
-        Dim arv As View
-        arv = adblink.OpenView("AR0018")
+        Dim arv As AccpacView
+        arv = custstatement.xdbcom.OpenView2("AR0018")
         Dim searfil As String = ""
         If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
             searfil = "NAMEEMPL Like ""%" + Txtname.Text + "%"" and CODESLSP like ""%" + Txtsalm.Text + "%"" "
@@ -255,9 +255,8 @@ Public Class frmsalm
 
     Private Sub Txtname_TextChanged(sender As Object, e As EventArgs) Handles Txtname.TextChanged
 
-
-        Dim arv As View
-        arv = adblink.OpenView("AR0018")
+        Dim arv As AccpacView
+        arv = custstatement.xdbcom.OpenView2("AR0018")
         Dim searfil As String = ""
         If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
             searfil = "NAMEEMPL Like ""%" + Txtname.Text + "%"" and CODESLSP like ""%" + Txtsalm.Text + "%"" "
@@ -301,8 +300,8 @@ Public Class frmsalm
     Private Sub Txtname_MouseMove(sender As Object, e As MouseEventArgs) Handles Txtname.MouseMove
 
 
-        Dim arv As View
-        arv = adblink.OpenView("AR0018")
+        Dim arv As AccpacView
+        arv = custstatement.xdbcom.OpenView2("AR0018")
         Dim searfil As String = ""
         If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
             searfil = "NAMEEMPL Like ""%" + Txtname.Text + "%"" and CODESLSP like ""%" + Txtsalm.Text + "%"" "
@@ -346,8 +345,8 @@ Public Class frmsalm
     Private Sub Txtname_MouseLeave(sender As Object, e As EventArgs) Handles Txtname.MouseLeave
 
 
-        Dim arv As View
-        arv = adblink.OpenView("AR0018")
+        Dim arv As AccpacView
+        arv = custstatement.xdbcom.OpenView2("AR0018")
         Dim searfil As String = ""
         If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
             searfil = "NAMEEMPL Like ""%" + Txtname.Text + "%"" and CODESLSP like ""%" + Txtsalm.Text + "%"" "
@@ -391,8 +390,8 @@ Public Class frmsalm
     Private Sub DGfsalm_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGfsalm.CellContentClick
         Try
 
-            Dim arv As View
-            arv = adblink.OpenView("AR0018")
+            Dim arv As AccpacView
+            arv = custstatement.xdbcom.OpenView2("AR0018")
 
 
             Dim searfil As String = ""

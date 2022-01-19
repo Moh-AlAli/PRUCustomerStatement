@@ -1,20 +1,20 @@
-﻿'Imports AccpacCOMAPI
-Imports ACCPAC.Advantage
+﻿Imports AccpacCOMAPI
+'Imports ACCPAC.Advantage
 
 Public Class tocust
     Private i As Integer
     Private j As Integer
-    Private os As New Session
-    Private adblink As DBLink
+    '  Private os As New Session
+    '  Private adblink As DBLink
 
     Private Sub tocust_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            os.Init("", "AR", "AR0024", "65A")
-            os.OpenWin("", "", "", custstatement.compid, System.DateTime.Now, 0)
-            'os.Open("ADMIN", "ADMIN", custstatement.compid, System.DateTime.Now, 0)
-            adblink = os.OpenDBLink(DBLinkType.Company, DBLinkFlags.ReadOnly)
-            Dim arv As View
-            arv = adblink.OpenView("AR0024")
+            'os.Init("", "AR", "AR0024", "65A")
+            'os.OpenWin("", "", "", custstatement.compid, System.DateTime.Now, 0)
+            ''os.Open("ADMIN", "ADMIN", custstatement.compid, System.DateTime.Now, 0)
+            'adblink = os.OpenDBLink(DBLinkType.Company, DBLinkFlags.ReadOnly)
+            Dim arv As AccpacView
+            arv = custstatement.xdbcom.OpenView2("AR0024")
 
             Dim arcusds As DataSet = New DataSet("AR")
 
@@ -57,8 +57,8 @@ Public Class tocust
         Try
 
 
-            Dim arv As View
-            arv = adblink.OpenView("AR0024")
+            Dim arv As AccpacView
+            arv = custstatement.xdbcom.OpenView2("AR0024")
             Dim searfil As String = ""
 
             If Txtcusno.Text <> Nothing And Txtname.Text <> Nothing Then
@@ -110,9 +110,8 @@ Public Class tocust
         If Txtcusno.Text <> Nothing Then
 
 
-
-            Dim arv As View
-            arv = adblink.OpenView("AR0024")
+            Dim arv As AccpacView
+            arv = custstatement.xdbcom.OpenView2("AR0024")
             Dim searfil As String = ""
             If Txtcusno.Text <> Nothing And Txtname.Text <> Nothing Then
                 searfil = "NAMECUST Like ""%" + Txtname.Text + "%"" and IDCUST like ""%" + Txtcusno.Text + "%"" "
@@ -161,8 +160,8 @@ Public Class tocust
 
 
 
-                Dim arv As View
-                arv = adblink.OpenView("AR0024")
+                Dim arv As AccpacView
+                arv = custstatement.xdbcom.OpenView2("AR0024")
                 Dim searfil As String = ""
 
                 If Txtcusno.Text <> Nothing And Txtname.Text <> Nothing Then
@@ -204,9 +203,8 @@ Public Class tocust
             If Txtcusno.Text <> Nothing Then
 
 
-
-                Dim arv As View
-                arv = adblink.OpenView("AR0024")
+                Dim arv As AccpacView
+                arv = custstatement.xdbcom.OpenView2("AR0024")
                 Dim searfil As String = ""
                 If Txtcusno.Text <> Nothing And Txtname.Text <> Nothing Then
                     searfil = "NAMECUST Like ""%" + Txtname.Text + "%"" and IDCUST like ""%" + Txtcusno.Text + "%"" "
@@ -246,9 +244,8 @@ Public Class tocust
             If Txtname.Text <> Nothing Then
 
 
-
-                Dim arv As View
-                arv = adblink.OpenView("AR0024")
+                Dim arv As AccpacView
+                arv = custstatement.xdbcom.OpenView2("AR0024")
                 Dim searfil As String = ""
 
                 If Txtcusno.Text <> Nothing And Txtname.Text <> Nothing Then
@@ -288,9 +285,8 @@ Public Class tocust
     Private Sub DGtocus_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DGtocus.CellContentClick
         Try
 
-
-            Dim arv As View
-            arv = adblink.OpenView("AR0024")
+            Dim arv As AccpacView
+            arv = custstatement.xdbcom.OpenView2("AR0024")
             Dim searfil As String = ""
             If Txtcusno.Text <> Nothing And Txtname.Text <> Nothing Then
                 searfil = "NAMECUST Like ""%" + Txtname.Text + "%"" and IDCUST like ""%" + Txtcusno.Text + "%"" "

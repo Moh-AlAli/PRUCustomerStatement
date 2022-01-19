@@ -8,7 +8,7 @@ Friend Class custstatement
     Public Tocust As String
     Public fdate As String
     Public tdate As String
-    Private xdbcom As AccpacDBLink
+    Friend xdbcom As AccpacDBLink
 
     Private Sub custstatement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try

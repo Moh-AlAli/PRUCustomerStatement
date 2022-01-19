@@ -1,20 +1,21 @@
-﻿Imports ACCPAC.Advantage
+﻿'Imports ACCPAC.Advantage
+Imports AccpacCOMAPI
 Public Class tosalm
     Private i As Integer
     Private j As Integer
-    Private os As New Session
-    Private adblink As DBLink
+    'Private os As New Session
+    'Private adblink As DBLink
 
     Private Sub tosalm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try
 
-            os.Init("", "AR", "AR0018", "65A")
-            os.OpenWin("", "", "", custstatement.compid, System.DateTime.Now, 0)
-            'os.Open("ADMIN", "ADMIN", custstatement.compid, System.DateTime.Now, 0)
-            adblink = os.OpenDBLink(DBLinkType.Company, DBLinkFlags.ReadOnly)
-            Dim arv As View
-            arv = adblink.OpenView("AR0018")
+            'os.Init("", "AR", "AR0018", "65A")
+            'os.OpenWin("", "", "", custstatement.compid, System.DateTime.Now, 0)
+            ''os.Open("ADMIN", "ADMIN", custstatement.compid, System.DateTime.Now, 0)
+            'adblink = os.OpenDBLink(DBLinkType.Company, DBLinkFlags.ReadOnly)
+            Dim arv As AccpacView
+            arv = custstatement.xdbcom.OpenView2("AR0018")
 
             Dim arcusds As DataSet = New DataSet("AR")
 
@@ -57,8 +58,8 @@ Public Class tosalm
         Try
 
 
-            Dim arv As View
-            arv = adblink.OpenView("AR0018")
+            Dim arv As AccpacView
+            arv = custstatement.xdbcom.OpenView2("AR0018")
             Dim searfil As String = ""
 
             If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
@@ -111,8 +112,8 @@ Public Class tosalm
 
 
 
-            Dim arv As View
-            arv = adblink.OpenView("AR0018")
+            Dim arv As AccpacView
+            arv = custstatement.xdbcom.OpenView2("AR0018")
             Dim searfil As String = ""
             If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
                 searfil = "NAMEEMPL Like ""%" + Txtname.Text + "%"" and CODESLSP like ""%" + Txtsalm.Text + "%"" "
@@ -161,8 +162,8 @@ Public Class tosalm
 
 
 
-                Dim arv As View
-                arv = adblink.OpenView("AR0018")
+                Dim arv As AccpacView
+                arv = custstatement.xdbcom.OpenView2("AR0018")
                 Dim searfil As String = ""
 
                 If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
@@ -205,8 +206,8 @@ Public Class tosalm
 
 
 
-                Dim arv As View
-                arv = adblink.OpenView("AR0018")
+                Dim arv As AccpacView
+                arv = custstatement.xdbcom.OpenView2("AR0018")
                 Dim searfil As String = ""
                 If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
                     searfil = "NAMEEMPL Like ""%" + Txtname.Text + "%"" and CODESLSP like ""%" + Txtsalm.Text + "%"" "
@@ -247,8 +248,8 @@ Public Class tosalm
 
 
 
-                Dim arv As View
-                arv = adblink.OpenView("AR0018")
+                Dim arv As AccpacView
+                arv = custstatement.xdbcom.OpenView2("AR0018")
                 Dim searfil As String = ""
 
                 If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
@@ -289,8 +290,8 @@ Public Class tosalm
         Try
 
 
-            Dim arv As View
-            arv = adblink.OpenView("AR0018")
+            Dim arv As AccpacView
+            arv = custstatement.xdbcom.OpenView2("AR0018")
             Dim searfil As String = ""
             If Txtsalm.Text <> Nothing And Txtname.Text <> Nothing Then
                 searfil = "NAMEEMPL Like ""%" + Txtname.Text + "%"" and CODESLSP like ""%" + Txtsalm.Text + "%"" "
