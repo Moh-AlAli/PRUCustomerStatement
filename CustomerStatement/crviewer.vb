@@ -14,8 +14,21 @@ Friend Class crviewer
     Dim server As String = ""
     Dim uid As String = ""
     Dim pass As String = ""
-    Dim fdate As String = ""
-    Dim tdate As String = ""
+
+    Private ccompid As String
+    Private crbfun As Boolean
+    Private crbsrc As Boolean
+    Private crbcw As Boolean
+    Private crbwcw As Boolean
+    Private cfdate As String
+    Private ctdate As String
+    Private cfrmsales As String
+    Private ctosales As String
+    Private cfrmcust As String
+    Private ctocust As String
+    Private cwsalm As Boolean
+    Private cwosalm As Boolean
+    Friend Property ObjectHandle As String
     Friend Function createdes(ByVal key As String) As TripleDES
         Dim md5 As MD5 = New MD5CryptoServiceProvider()
         Dim des As TripleDES = New TripleDESCryptoServiceProvider()
@@ -50,7 +63,28 @@ Friend Class crviewer
 
         Return cons
     End Function
+    Public Sub New(ByVal objectHandle As String, ByVal compid As String, ByVal rbfun As Boolean, ByVal rbsrc As Boolean, ByVal rbcw As Boolean, ByVal rbwcw As Boolean, ByVal fdate As String, ByVal tdate As String, ByVal frmsales As String, ByVal tosales As String, ByVal frmcust As String, ByVal tocust As String, ByVal wsalm As Boolean, ByVal wosalm As Boolean)
+        InitializeComponent()
+        objectHandle = objectHandle
+        ccompid = compid
+        crbfun = rbfun
+        crbsrc = rbsrc
+        crbcw = rbcw
+        crbwcw = rbwcw
+        cfdate = fdate
+        ctdate = tdate
+        cfrmsales = frmsales
+        ctosales = tosales
+        cfrmcust = frmcust
+        ctocust = tocust
+        cwsalm = wsalm
+        cwosalm = wosalm
+    End Sub
 
+    Public Sub New(ByVal objectHandle As String)
+        InitializeComponent()
+        objectHandle = objectHandle
+    End Sub
 
     Private Sub crviewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
@@ -62,60 +96,36 @@ Friend Class crviewer
             Me.Controls.Add(cwvr)
 
 
-            If custstatement.Rbfunc.Checked = True And custstatement.rbwtcw.Checked = True Then
+
+            If crbfun = True And crbwcw = True Then
                 rdoc.Load("reports\ARCUSTHOMERPT.rpt")
-            ElseIf custstatement.Rbsource.Checked = True And custstatement.rbwtcw.Checked = True Then
+            ElseIf crbsrc = True And crbwcw = True Then
                 rdoc.Load("reports\ARCUSTSURCRPT.rpt")
-            ElseIf custstatement.Rbfunc.Checked = True And custstatement.rbcw.Checked = True Then
+            ElseIf crbfun = True And crbcw = True Then
                 rdoc.Load("reports\ARCUSTHOMERPTCW.rpt")
-            ElseIf custstatement.Rbsource.Checked = True And custstatement.rbcw.Checked = True Then
+            ElseIf crbsrc = True And crbcw = True Then
                 rdoc.Load("reports\ARCUSTSURCRPTCw.rpt")
             End If
+
+
 
 
             Dim tabs As Tables = rdoc.Database.Tables
             Dim parv As New ParameterValues
             Dim dis As New ParameterDiscreteValue
 
-            Dim fmonthnew As String = 0
-            If custstatement.DateTimePicker1.Value.Month.ToString.Length < 2 Then
-                fmonthnew = "0" & custstatement.DateTimePicker1.Value.Month
-            Else
-                fmonthnew = custstatement.DateTimePicker1.Value.Month
-            End If
-            Dim tmonthnew As String = 0
-            If custstatement.DateTimePicker2.Value.Month.ToString.Length < 2 Then
-                tmonthnew = "0" & custstatement.DateTimePicker2.Value.Month
-            Else
-                tmonthnew = custstatement.DateTimePicker2.Value.Month
-            End If
 
-            Dim fdaynew As String = 0
-            If custstatement.DateTimePicker1.Value.Day.ToString.Length < 2 Then
-                fdaynew = "0" & custstatement.DateTimePicker1.Value.Day
-            Else
-                fdaynew = custstatement.DateTimePicker1.Value.Day
-            End If
 
-            Dim tdaynew As String = 0
 
-            If custstatement.DateTimePicker2.Value.Day.ToString.Length < 2 Then
-                tdaynew = "0" & custstatement.DateTimePicker2.Value.Day
-            Else
-                tdaynew = custstatement.DateTimePicker2.Value.Day
-            End If
-
-            Dim fdate As String = custstatement.DateTimePicker1.Value.Year & fmonthnew & fdaynew
-
-            Dim tdate As String = custstatement.DateTimePicker2.Value.Year & tmonthnew & tdaynew
 
             Dim smonthly As String = ""
 
-            If custstatement.Rbwsm.Checked = True Then
+            If cwsalm = True Then
                 smonthly = "Y"
             Else
                 smonthly = "N"
             End If
+
 
             Readconnectionstring()
 
@@ -124,7 +134,7 @@ Friend Class crviewer
             For Each TAB As CrystalDecisions.CrystalReports.Engine.Table In tabs
                 Dim tablog As TableLogOnInfo = TAB.LogOnInfo
                 conrpt.ServerName = server
-                conrpt.DatabaseName = custstatement.compid
+                conrpt.DatabaseName = ccompid
                 conrpt.UserID = uid
                 conrpt.Password = pass
                 tablog.ConnectionInfo = conrpt
@@ -157,7 +167,7 @@ Friend Class crviewer
                             For Each crsubtable In crSubTables
                                 crtableLogoninfo = crsubtable.LogOnInfo
                                 subConInfo.ServerName = server
-                                subConInfo.DatabaseName = custstatement.compid
+                                subConInfo.DatabaseName = ccompid
                                 subConInfo.UserID = uid
                                 subConInfo.Password = pass
                                 crtableLogoninfo.ConnectionInfo = subConInfo
@@ -170,7 +180,7 @@ Friend Class crviewer
                             For Each crsubtable In crSubTables
                                 crtableLogoninfo = crsubtable.LogOnInfo
                                 subConInfo.ServerName = server
-                                subConInfo.DatabaseName = custstatement.compid
+                                subConInfo.DatabaseName = ccompid
                                 subConInfo.UserID = uid
                                 subConInfo.Password = pass
                                 crtableLogoninfo.ConnectionInfo = subConInfo
@@ -184,7 +194,7 @@ Friend Class crviewer
                             For Each crsubtable In crSubTables
                                 crtableLogoninfo = crsubtable.LogOnInfo
                                 subConInfo.ServerName = server
-                                subConInfo.DatabaseName = custstatement.compid
+                                subConInfo.DatabaseName = ccompid
                                 subConInfo.UserID = uid
                                 subConInfo.Password = pass
                                 crtableLogoninfo.ConnectionInfo = subConInfo
@@ -197,12 +207,12 @@ Friend Class crviewer
             Next
 
 
-            rdoc.SetParameterValue("frmyearper", fdate)
-            rdoc.SetParameterValue("toyearper", tdate)
-            rdoc.SetParameterValue("Frmcus", custstatement.txtfrmcus.Text)
-            rdoc.SetParameterValue("TOcus", custstatement.Txttocus.Text)
-            rdoc.SetParameterValue("Frmsal", custstatement.Txtfrmsalm.Text)
-            rdoc.SetParameterValue("Tosal", custstatement.Txttosalm.Text)
+            rdoc.SetParameterValue("frmyearper", cfdate)
+            rdoc.SetParameterValue("toyearper", ctdate)
+            rdoc.SetParameterValue("Frmcus", cfrmcust)
+            rdoc.SetParameterValue("TOcus", ctocust)
+            rdoc.SetParameterValue("Frmsal", cfrmsales)
+            rdoc.SetParameterValue("Tosal", ctocust)
             rdoc.SetParameterValue("smonthly", smonthly)
 
             cwvr.ReportSource = rdoc
@@ -217,42 +227,6 @@ Friend Class crviewer
         End Try
     End Sub
 
-    Friend Function glar() As DataSet
-        Dim cmd As New SqlCommand()
-        Dim sql As String = " SELECT GLBATCH,GLENTRY,IDINVC,IDCUST,CNTBTCH,CNTITEM " &
-                            " FROM  ARPJH  where IDCUST between '" & custstatement.txtfrmcus.Text & "' and '" & custstatement.Txttosalm.Text & "'"
-        Dim da As New SqlDataAdapter
-        Dim con As New SqlConnection(Readconnectionstring())
-        With cmd
-            .CommandText = sql
-            .CommandType = CommandType.Text
-            .Connection = con
-        End With
-
-        da.SelectCommand = cmd
-        Dim ds As New DataSet
-        da.Fill(ds)
-        Return ds
-    End Function
-    Friend Function arstate(ByVal tdate As Integer) As DataSet
-        Dim cmd As New SqlCommand()
-        Dim sql As String = " SELECT DISTINCT AROBL.TRXTYPETXT, AROBL.IDINVC, CSCCD.DECIMALS, AROBL.DATEINVC, AROBL.IDCUST, AROBL.AMTINVCTC, AROBL.DESCINVC, AROBP.TRXTYPE, AROBP.IDMEMOXREF, CSCOM.HOMECUR, AROBP.AMTPAYMHC, AROBL.AMTINVCHC, AROBL.CNTBTCH, AROBL.CNTITEM, AROBP.CNTBTCH, AROBP.CNTITEM, AROBP.IDINVC, AROBL.IDRMIT, ARRRH.TEXTRETRN, AROBP.DATEBUS, ARCUS.IDCUST, ARCUS.NAMECUST, ARTCR.TEXTRMIT, AROBP.IDCUST " &
-                            " FROM   ARCUS  INNER JOIN CSCOM  ON ARCUS.AUDTORG=CSCOM.ORGID LEFT OUTER JOIN SAMDAT.dbo.AROBL AROBL ON ARCUS.IDCUST=AROBL.IDCUST INNER JOIN SAMDAT.dbo.CSCCD CSCCD ON CSCOM.HOMECUR=CSCCD.CURID LEFT OUTER JOIN SAMDAT.dbo.AROBP AROBP ON AROBL.IDCUST=AROBP.IDCUST AND AROBL.IDINVC=AROBP.IDINVC LEFT OUTER JOIN SAMDAT.dbo.ARTCR ARTCR ON AROBL.CNTBTCH=ARTCR.CNTBTCH AND AROBL.CNTITEM=ARTCR.CNTITEM AND AROBL.IDCUST=ARTCR.IDCUST LEFT OUTER JOIN SAMDAT.dbo.ARRRH ARRRH " &
-                            " ON AROBP.IDBANK=ARRRH.IDBANK AND AROBP.IDCUST=ARRRH.IDCUST AND AROBP.IDRMIT=ARRRH.IDRMIT AND AROBP.DEPSEQ=ARRRH.DEPSEQ AND AROBP.DEPLINE=ARRRH.DEPLINE AND AROBP.DATERMIT=ARRRH.DATERMIT " &
-                            " WHERE  AROBL.DATEINVC<=" & tdate & " AND AROBL.IDCUST between '" & custstatement.txtfrmcus.Text & "' and '" & custstatement.Txttosalm.Text & "'"
-        Dim da As New SqlDataAdapter
-        Dim con As New SqlConnection(Readconnectionstring())
-        With cmd
-            .CommandText = sql
-            .CommandType = CommandType.Text
-            .Connection = con
-        End With
-
-        da.SelectCommand = cmd
-        Dim ds As New DataSet
-        da.Fill(ds)
-        Return ds
-    End Function
 
 End Class
 

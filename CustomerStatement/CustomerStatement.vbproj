@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8CB8B468-17D1-452B-B155-950B0B803FF4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>CustomerStatement.My.MyApplication</StartupObject>
+    <StartupObject>Sub Main</StartupObject>
     <RootNamespace>CustomerStatement</RootNamespace>
     <AssemblyName>CustomerStatement</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsForms</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -51,6 +51,12 @@
   <PropertyGroup>
     <ApplicationIcon>CATS_Rep.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ACCPAC.Advantage, Version=6.4.0.20, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -84,6 +90,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -111,29 +120,30 @@
     <Compile Include="crviewer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="custstatement.vb">
-      <SubType>Form</SubType>
+    <Compile Include="ctControls.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="custstatement.Designer.vb">
       <DependentUpon>custstatement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="custstatement.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmsalm.Designer.vb">
-      <DependentUpon>frmsalm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmsalm.vb">
+    <Compile Include="FrmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fromcust.Designer.vb">
-      <DependentUpon>Fromcust.vb</DependentUpon>
+    <Compile Include="FromFinder.Designer.vb">
+      <DependentUpon>FromFinder.vb</DependentUpon>
     </Compile>
-    <Compile Include="Fromcust.vb">
+    <Compile Include="FromFinder.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="glbCode.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -145,18 +155,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Tocust.Designer.vb">
-      <DependentUpon>Tocust.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Tocust.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="tosalm.Designer.vb">
-      <DependentUpon>tosalm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="tosalm.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Program.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="crviewer.resx">
@@ -165,11 +164,12 @@
     <EmbeddedResource Include="custstatement.resx">
       <DependentUpon>custstatement.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmsalm.resx">
-      <DependentUpon>frmsalm.vb</DependentUpon>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fromcust.resx">
-      <DependentUpon>Fromcust.vb</DependentUpon>
+    <EmbeddedResource Include="FromFinder.resx">
+      <DependentUpon>FromFinder.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -177,14 +177,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tocust.resx">
-      <DependentUpon>Tocust.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="tosalm.resx">
-      <DependentUpon>tosalm.vb</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
