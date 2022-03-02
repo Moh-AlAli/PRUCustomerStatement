@@ -12,31 +12,16 @@ Imports System.Drawing
 Imports System.ComponentModel
 
 Friend Class custstatement
-    'Public compid As String = ""
-    ' Private acsignon As New AccpacSignonManager.AccpacSignonMgr
-    '  Public mSession As New AccpacCOMAPI.AccpacSession
     Public frmcust As String
     Public Tocust As String
     Public fdate As String
     Public tdate As String
-    ' Friend xdbcom As AccpacDBLink
     Friend Property ERPSession As acc.Session
     Friend Property Company As ERPCompany
     Friend Property SessionDate As String
     Friend Property ObjectHandle As String
     Friend compid As String
-    'Private DS As DataSet = New DataSet()
-    'Private crSubItem As ListViewItem.ListViewSubItem = Nothing
-    'Private crItem As ListViewItem = Nothing
-    'Private _lsvFinderLounched As Boolean = False
-    'Private processWithTab As Boolean = False
-    'Private processWithEsc As Boolean = False
-    'Private _curPoSeq As Integer = 0
     Private _oldVendNumb As String = ""
-    'Private _oldPONumb As String = ""
-    'Private _iniData As Boolean = True
-    'Private _detailsChanged As Boolean = False
-    'Private _hdrOldData As Hashtable = New Hashtable()
     <DllImport("a4wroto.dll", EntryPoint:="rotoSetObjectWindow", CharSet:=CharSet.Ansi)>
     Private Shared Sub rotoSetObjectWindow(
         <MarshalAs(UnmanagedType.I8)> ByVal objectHandle As Long,
@@ -130,7 +115,6 @@ Friend Class custstatement
             tdate = DateTimePicker2.Value.Year & tmonthnew & tdaynew
             If Trim(txtfrmcus.Text) <= Trim(Txttocus.Text) Then
                 If fdate <= tdate Then
-                    'ByVal rbfun As Boolean, ByVal rbsrc As Boolean, ByVal rbcw As Boolean, ByVal rbwcw As Boolean, ByVal fdate As String, ByVal tdate As String, ByVal frmsales As String, ByVal tosales As String, ByVal frmcus As String, ByVal tocust As String, ByVal wsalm As Boolean, ByVal wosalm As Boolean
                     Dim f As Form = New crviewer(ObjectHandle, compid, Rbfunc.Checked, Rbsource.Checked, rbcw.Checked, rbwtcw.Checked, fdate, tdate, Txtfrmsalm.Text, Txttosalm.Text, txtfrmcus.Text, Txttocus.Text, Rbwsm.Checked, Rbwosm.Checked)
 
                     f.Show()
@@ -152,7 +136,7 @@ Friend Class custstatement
         Dim r As DialogResult = vfnd.ShowDialog(Me)
         If r = DialogResult.OK Then
             txtfrmcus.Text = vfnd.Result.ToArray()(0)
-
+            Txttocus.Text = vfnd.Result.ToArray()(0)
             fndEditBoxValidate(txtfrmcus, EventArgs.Empty)
         End If
 
@@ -175,7 +159,7 @@ Friend Class custstatement
         Dim r As DialogResult = vfnd.ShowDialog(Me)
         If r = DialogResult.OK Then
             Txtfrmsalm.Text = vfnd.Result.ToArray()(0)
-
+            Txttosalm.Text = vfnd.Result.ToArray()(0)
             fndEditBoxValidate(Txtfrmsalm, EventArgs.Empty)
         End If
     End Sub
@@ -306,7 +290,7 @@ Friend Class custstatement
             ERPSession.Init(ObjectHandle, "AS", "AS0001", "65A")
 
             If Not Long.TryParse(ObjectHandle, lhWnd) Then
-                MessageBox.Show("Invalid Sage 300 ERP object handle.", "Receive PO Utility", MessageBoxButtons.OK, MessageBoxIcon.[Error])
+                MessageBox.Show("Invalid Sage 300 ERP object handle.", "Customer Statement Utility", MessageBoxButtons.OK, MessageBoxIcon.[Error])
                 ERPSession.Dispose()
                 Return
             End If
