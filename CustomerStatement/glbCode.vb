@@ -129,11 +129,13 @@ Friend Enum RecordType
         Friend Sub New(ByVal name As String, ByVal id As String)
         Me.Name = name
         Me.ID = id
+
     End Sub
 
         Public Overrides Function ToString() As String
-            Return Name
-        End Function
+        Return Name
+
+    End Function
     End Class
 
     Friend Module Util
@@ -179,14 +181,10 @@ Friend Enum RecordType
             Next
 
             fields = f.ToArray()
-        'If entity = "ARCUSSP" Then
 
-        'End If
         Select Case entity
             Case "ARCUS"
                 rt = If(setTo250 = False, "select " & ff.Substring(0, ff.Length - 1) & " from ARCUS", "select top 250 " & ff.Substring(0, ff.Length - 1) & " from ARCUS")
-            Case "ARSAP"
-                rt = If(setTo250 = False, "select " & ff.Substring(0, ff.Length - 1) & " from ARSAP", "select top 250 " & ff.Substring(0, ff.Length - 1) & " from ARSAP")
         End Select
 
         Return rt

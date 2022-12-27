@@ -34,6 +34,7 @@ Friend Class custstatement
         ERPSession = ses
         Company = comp
         compid = comp.ID
+
         SessionDate = sesDate
 
     End Sub
@@ -71,10 +72,9 @@ Friend Class custstatement
             'SessionDate = sesDate
 
             Txttocus.Text = "zzzzzzzzzzzzzzzzzzzzzz"
-            Txttosalm.Text = "zzzzzzzzzzzzzzzzzzzzzz"
             Rbfunc.Checked = True
             rbcw.Checked = True
-            Rbwosm.Checked = True
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
             Close()
@@ -115,15 +115,15 @@ Friend Class custstatement
             tdate = DateTimePicker2.Value.Year & tmonthnew & tdaynew
             If Trim(txtfrmcus.Text) <= Trim(Txttocus.Text) Then
                 If fdate <= tdate Then
-                    Dim f As Form = New crviewer(ObjectHandle, compid, Rbfunc.Checked, Rbsource.Checked, rbcw.Checked, rbwtcw.Checked, fdate, tdate, Txtfrmsalm.Text, Txttosalm.Text, txtfrmcus.Text, Txttocus.Text, Rbwsm.Checked, Rbwosm.Checked)
 
+                    Dim f As Form = New crviewer(ObjectHandle, ERPSession, Rbfunc.Checked, Rbsource.Checked, rbcw.Checked, rbwtcw.Checked, fdate, tdate, txtfrmcus.Text, Txttocus.Text)
                     f.Show()
 
                 Else
                     MessageBox.Show("From Date  greater than To Date")
                 End If
             Else
-                MessageBox.Show("From Vendor No greater than To Vendor No")
+                MessageBox.Show("From Customer No greater than To Customer No")
             End If
 
         Catch ex As Exception
@@ -153,27 +153,9 @@ Friend Class custstatement
     End Sub
 
 
-    Private Sub Butffrmsal_Click(sender As Object, e As EventArgs) Handles Butffrmsal.Click
-        Dim vfnd As FromFinder = New FromFinder("ARSAP", "SalesPerson", New String() {"CODESLSP", "NAMEEMPL"}, ERPSession, "", "")
 
-        Dim r As DialogResult = vfnd.ShowDialog(Me)
-        If r = DialogResult.OK Then
-            Txtfrmsalm.Text = vfnd.Result.ToArray()(0)
-            Txttosalm.Text = vfnd.Result.ToArray()(0)
-            fndEditBoxValidate(Txtfrmsalm, EventArgs.Empty)
-        End If
-    End Sub
 
-    Private Sub Butftosal_Click(sender As Object, e As EventArgs) Handles Butftosal.Click
-        Dim vfnd As FromFinder = New FromFinder("ARSAP", "SalesPerson", New String() {"CODESLSP", "NAMEEMPL"}, ERPSession, "", "")
 
-        Dim r As DialogResult = vfnd.ShowDialog(Me)
-        If r = DialogResult.OK Then
-            Txttosalm.Text = vfnd.Result.ToArray()(0)
-
-            fndEditBoxValidate(Txttosalm, EventArgs.Empty)
-        End If
-    End Sub
 
     Private Sub CMD_Exit_Click(sender As Object, e As EventArgs) Handles CmdClose.Click
         Close()
@@ -287,7 +269,7 @@ Friend Class custstatement
         Try
             If ERPSession Is Nothing Then ERPSession = New acc.Session()
             If ERPSession.IsOpened Then ERPSession.Dispose()
-            ERPSession.Init(ObjectHandle, "AS", "AS0001", "65A")
+            ERPSession.Init(ObjectHandle, "AS", "AS0001", "67A")
 
             If Not Long.TryParse(ObjectHandle, lhWnd) Then
                 MessageBox.Show("Invalid Sage 300 ERP object handle.", "Customer Statement Utility", MessageBoxButtons.OK, MessageBoxIcon.[Error])

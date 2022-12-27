@@ -166,18 +166,18 @@ Partial Friend Class FrmLogin
 
 
     Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
-            DialogResult = DialogResult.Cancel
-            Close()
-        End Sub
+        DialogResult = DialogResult.Cancel
+        Close()
+    End Sub
 
-        Private Sub cmdOK_Click(sender As Object, e As EventArgs) Handles cmdOK.Click
+    Private Sub cmdOK_Click(sender As Object, e As EventArgs) Handles cmdOK.Click
         If txtUser.Text = "" Then
-            MessageBox.Show(Me, "User ID has not been assignd." & vbCrLf & "Enter an existing user ID or ask your system administrator to add a new record for this user.", "Receive PO Utility", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show(Me, "User ID has not been assignd." & vbCrLf & "Enter an existing user ID or ask your system administrator to add a new record for this user.", "Customer Statement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
         If txtPwd.Text = "" Then
-            MessageBox.Show(Me, "Password Can't be blank." & vbCrLf & "Enter an existing user ID and correct password.", "Receive PO Utility", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show(Me, "Password Can't be blank." & vbCrLf & "Enter an existing user ID and correct password.", "Customer Statement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
@@ -186,7 +186,7 @@ Partial Friend Class FrmLogin
 
         Try
             ERPSession = New Session()
-            ERPSession.Init("", "XX", "XX1000", "65A")
+            ERPSession.Init("", "XX", "XX1000", "67A")
             ERPSession.Open(txtUser.Text.ToUpper(), txtPwd.Text.ToUpper(), c.ID.ToUpper(), DateTime.Parse(dtSesDate.Text), 0)
         Catch ex As Exception
             Dim erstr As String = ""
@@ -209,5 +209,7 @@ Partial Friend Class FrmLogin
         DialogResult = DialogResult.OK
         Close()
     End Sub
-    End Class
+
+
+End Class
 

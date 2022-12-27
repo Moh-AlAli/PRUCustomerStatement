@@ -49,7 +49,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>CATS_Rep.ico</ApplicationIcon>
+    <ApplicationIcon>IDS.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
@@ -58,26 +58,26 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ACCPAC.Advantage, Version=6.4.0.20, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=x86">
+    <Reference Include="ACCPAC.Advantage, Version=6.5.0.30, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\DLL65\ACCPAC.Advantage.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\DLL67\New folder\ACCPAC.Advantage.dll</HintPath>
     </Reference>
-    <Reference Include="ACCPAC.Advantage.COMSVR.Interop, Version=6.4.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=MSIL">
+    <Reference Include="ACCPAC.Advantage.COMSVR.Interop, Version=6.5.0.40, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\..\..\..\..\..\DLL65\ACCPAC.Advantage.COMSVR.Interop.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\DLL67\New folder\ACCPAC.Advantage.COMSVR.Interop.dll</HintPath>
     </Reference>
-    <Reference Include="ACCPAC.Advantage.Server, Version=6.4.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=MSIL">
+    <Reference Include="ACCPAC.Advantage.Server, Version=6.5.0.30, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\DLL65\ACCPAC.Advantage.Server.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\DLL67\New folder\ACCPAC.Advantage.Server.dll</HintPath>
     </Reference>
-    <Reference Include="ACCPAC.Advantage.Server.RemotingManager, Version=6.4.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=x86">
+    <Reference Include="ACCPAC.Advantage.Server.RemotingManager, Version=6.5.0.30, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\DLL65\ACCPAC.Advantage.Server.RemotingManager.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\DLL67\New folder\ACCPAC.Advantage.Server.RemotingManager.dll</HintPath>
     </Reference>
-    <Reference Include="ACCPAC.Advantage.Types, Version=6.4.0.0, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=MSIL">
+    <Reference Include="ACCPAC.Advantage.Types, Version=6.5.0.30, Culture=neutral, PublicKeyToken=4d7048ecf2312a7c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\DLL65\ACCPAC.Advantage.Types.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\DLL67\New folder\ACCPAC.Advantage.Types.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -249,10 +249,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\txtcon\bpcon.txt" />
-    <Content Include="CATS_Rep.ico" />
+    <Content Include="IDS.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Debug\txtcon\" />
     <Folder Include="bin\Debug\xml\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

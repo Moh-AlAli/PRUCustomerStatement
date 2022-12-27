@@ -5,9 +5,6 @@ Imports System.Threading.Tasks
 Imports System.Windows.Forms
 Imports System.Xml.Linq
 Imports ACCPAC.Advantage
-
-
-
 Friend Class Program
     <STAThread>
     Shared Sub Main(ByVal args As String())
@@ -19,7 +16,7 @@ Friend Class Program
             Dim ses As Session = New Session()
 
             Try
-                ses.Init("", "XX", "XX1000", "65A")
+                ses.Init("", "XX", "XX1000", "67A")
                 Dim os As Organizations = ses.Organizations
 
                 For Each o As Organization In os

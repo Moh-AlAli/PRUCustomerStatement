@@ -59,18 +59,6 @@ Partial Class FromFinder
                 lstData.Items.Add(New ListViewItem(New String() {" ", " "}))
                 cmbFindBy.Items.AddRange(New LookupItem() {New LookupItem("Show All Records", "C", "ALL"), New LookupItem("Customer Number", "C", "IDCUST"), New LookupItem("Customer Name", "C", "NAMECUST")})
                 Exit Select
-            Case "ARSAP"
-
-                cols = New ColumnHeader() {New ColumnHeader() With {
-                        .Text = "Saelsman",
-                        .Width = 200
-                    }, New ColumnHeader() With {
-                        .Text = "Name",
-                        .Width = 300
-                    }}
-                lstData.Items.Add(New ListViewItem(New String() {" ", " "}))
-                cmbFindBy.Items.AddRange(New LookupItem() {New LookupItem("Show All Records", "C", "ALL"), New LookupItem("Saelsman", "C", "CODESLSP"), New LookupItem("Name", "C", "NAMEEMPL")})
-                Exit Select
         End Select
         Text = capt
         lstData.Columns.AddRange(cols)
@@ -85,19 +73,6 @@ Partial Class FromFinder
         End If
 
     End Sub
-
-
-
-
-
-
-
-
-
-
-
-
-
     Private Sub TDecimalKeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs)
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> "."c Then e.Handled = True
     End Sub
@@ -492,19 +467,13 @@ Partial Class FromFinder
     Private Sub FromFinder_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         lstData.Height = dataPan.Height - 38
     End Sub
-
-
-
     Private Sub cmdSelect_Click(sender As Object, e As EventArgs) Handles cmdSelect.Click
         SetResult()
         DialogResult = DialogResult.OK
         Close()
     End Sub
-
     Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
         DialogResult = DialogResult.Cancel
         Close()
     End Sub
-
-
 End Class

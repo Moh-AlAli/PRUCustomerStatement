@@ -23,16 +23,6 @@ Partial Class custstatement
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(custstatement))
-        Me.Rbwsm = New System.Windows.Forms.RadioButton()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.Rbwosm = New System.Windows.Forms.RadioButton()
-        Me.Butftosal = New System.Windows.Forms.Button()
-        Me.Txttosalm = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Butffrmsal = New System.Windows.Forms.Button()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Txtfrmsalm = New System.Windows.Forms.TextBox()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.rbwtcw = New System.Windows.Forms.RadioButton()
         Me.rbcw = New System.Windows.Forms.RadioButton()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -53,127 +43,11 @@ Partial Class custstatement
         Me.CmdClose = New System.Windows.Forms.Button()
         Me.Gbpar = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox5.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Gbpar.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Rbwsm
-        '
-        Me.Rbwsm.AutoSize = True
-        Me.Rbwsm.Location = New System.Drawing.Point(9, 28)
-        Me.Rbwsm.Name = "Rbwsm"
-        Me.Rbwsm.Size = New System.Drawing.Size(52, 17)
-        Me.Rbwsm.TabIndex = 0
-        Me.Rbwsm.TabStop = True
-        Me.Rbwsm.Text = "with "
-        Me.Rbwsm.UseVisualStyleBackColor = True
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.Rbwosm)
-        Me.GroupBox5.Controls.Add(Me.Rbwsm)
-        Me.GroupBox5.Font = New System.Drawing.Font("Tahoma", 8.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.GroupBox5.Location = New System.Drawing.Point(4, 408)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(279, 62)
-        Me.GroupBox5.TabIndex = 66
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Sales Monthly"
-        '
-        'Rbwosm
-        '
-        Me.Rbwosm.AutoSize = True
-        Me.Rbwosm.Location = New System.Drawing.Point(178, 29)
-        Me.Rbwosm.Name = "Rbwosm"
-        Me.Rbwosm.Size = New System.Drawing.Size(70, 17)
-        Me.Rbwosm.TabIndex = 1
-        Me.Rbwosm.TabStop = True
-        Me.Rbwosm.Text = "Without"
-        Me.Rbwosm.UseVisualStyleBackColor = True
-        '
-        'Butftosal
-        '
-        Me.Butftosal.BackColor = System.Drawing.SystemColors.Control
-        Me.Butftosal.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Butftosal.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Butftosal.Image = CType(resources.GetObject("Butftosal.Image"), System.Drawing.Image)
-        Me.Butftosal.Location = New System.Drawing.Point(247, 55)
-        Me.Butftosal.Name = "Butftosal"
-        Me.Butftosal.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Butftosal.Size = New System.Drawing.Size(17, 20)
-        Me.Butftosal.TabIndex = 26
-        Me.Butftosal.TabStop = False
-        Me.Butftosal.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Butftosal.UseVisualStyleBackColor = False
-        '
-        'Txttosalm
-        '
-        Me.Txttosalm.Location = New System.Drawing.Point(66, 56)
-        Me.Txttosalm.Name = "Txttosalm"
-        Me.Txttosalm.Size = New System.Drawing.Size(186, 20)
-        Me.Txttosalm.TabIndex = 2
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Arial Unicode MS", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label5.Location = New System.Drawing.Point(6, 58)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(22, 15)
-        Me.Label5.TabIndex = 24
-        Me.Label5.Text = "To"
-        '
-        'Butffrmsal
-        '
-        Me.Butffrmsal.BackColor = System.Drawing.SystemColors.Control
-        Me.Butffrmsal.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Butffrmsal.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Butffrmsal.Image = CType(resources.GetObject("Butffrmsal.Image"), System.Drawing.Image)
-        Me.Butffrmsal.Location = New System.Drawing.Point(248, 28)
-        Me.Butffrmsal.Name = "Butffrmsal"
-        Me.Butffrmsal.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Butffrmsal.Size = New System.Drawing.Size(17, 20)
-        Me.Butffrmsal.TabIndex = 23
-        Me.Butffrmsal.TabStop = False
-        Me.Butffrmsal.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Butffrmsal.UseVisualStyleBackColor = False
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Arial Unicode MS", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label6.Location = New System.Drawing.Point(6, 31)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(36, 15)
-        Me.Label6.TabIndex = 2
-        Me.Label6.Text = "From"
-        '
-        'Txtfrmsalm
-        '
-        Me.Txtfrmsalm.Location = New System.Drawing.Point(66, 29)
-        Me.Txtfrmsalm.Name = "Txtfrmsalm"
-        Me.Txtfrmsalm.Size = New System.Drawing.Size(186, 20)
-        Me.Txtfrmsalm.TabIndex = 1
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.Butftosal)
-        Me.GroupBox4.Controls.Add(Me.Txttosalm)
-        Me.GroupBox4.Controls.Add(Me.Label5)
-        Me.GroupBox4.Controls.Add(Me.Butffrmsal)
-        Me.GroupBox4.Controls.Add(Me.Label6)
-        Me.GroupBox4.Controls.Add(Me.Txtfrmsalm)
-        Me.GroupBox4.Font = New System.Drawing.Font("Tahoma", 8.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.GroupBox4.Location = New System.Drawing.Point(4, 12)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(280, 83)
-        Me.GroupBox4.TabIndex = 62
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Sales Man"
         '
         'rbwtcw
         '
@@ -202,7 +76,7 @@ Partial Class custstatement
         Me.GroupBox3.Controls.Add(Me.rbwtcw)
         Me.GroupBox3.Controls.Add(Me.rbcw)
         Me.GroupBox3.Font = New System.Drawing.Font("Tahoma", 8.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.GroupBox3.Location = New System.Drawing.Point(4, 340)
+        Me.GroupBox3.Location = New System.Drawing.Point(4, 278)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(279, 62)
         Me.GroupBox3.TabIndex = 65
@@ -213,7 +87,7 @@ Partial Class custstatement
         '
         Me.DateTimePicker2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker2.Location = New System.Drawing.Point(70, 246)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(70, 160)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker2.TabIndex = 70
@@ -222,7 +96,7 @@ Partial Class custstatement
         '
         Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(69, 217)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(69, 131)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker1.TabIndex = 69
@@ -243,7 +117,7 @@ Partial Class custstatement
         Me.CMD_OK.BackColor = System.Drawing.SystemColors.Control
         Me.CMD_OK.Cursor = System.Windows.Forms.Cursors.Default
         Me.CMD_OK.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CMD_OK.Location = New System.Drawing.Point(16, 477)
+        Me.CMD_OK.Location = New System.Drawing.Point(16, 364)
         Me.CMD_OK.Name = "CMD_OK"
         Me.CMD_OK.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.CMD_OK.Size = New System.Drawing.Size(81, 25)
@@ -265,10 +139,10 @@ Partial Class custstatement
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Arial Unicode MS", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold)
         Me.Label4.Location = New System.Drawing.Point(6, 31)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(36, 15)
+        Me.Label4.Size = New System.Drawing.Size(34, 13)
         Me.Label4.TabIndex = 2
         Me.Label4.Text = "From"
         '
@@ -277,7 +151,7 @@ Partial Class custstatement
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Font = New System.Drawing.Font("Tahoma", 8.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.GroupBox1.Location = New System.Drawing.Point(4, 192)
+        Me.GroupBox1.Location = New System.Drawing.Point(4, 106)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(280, 83)
         Me.GroupBox1.TabIndex = 63
@@ -287,10 +161,10 @@ Partial Class custstatement
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Arial Unicode MS", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold)
         Me.Label3.Location = New System.Drawing.Point(6, 58)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(22, 15)
+        Me.Label3.Size = New System.Drawing.Size(22, 13)
         Me.Label3.TabIndex = 24
         Me.Label3.Text = "To"
         '
@@ -319,10 +193,10 @@ Partial Class custstatement
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Arial Unicode MS", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold)
         Me.Label2.Location = New System.Drawing.Point(6, 58)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(22, 15)
+        Me.Label2.Size = New System.Drawing.Size(22, 13)
         Me.Label2.TabIndex = 24
         Me.Label2.Text = "To"
         '
@@ -344,10 +218,10 @@ Partial Class custstatement
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial Unicode MS", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold)
         Me.Label1.Location = New System.Drawing.Point(6, 31)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(36, 15)
+        Me.Label1.Size = New System.Drawing.Size(34, 13)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "From"
         '
@@ -363,7 +237,7 @@ Partial Class custstatement
         Me.CmdClose.BackColor = System.Drawing.SystemColors.Control
         Me.CmdClose.Cursor = System.Windows.Forms.Cursors.Default
         Me.CmdClose.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CmdClose.Location = New System.Drawing.Point(183, 474)
+        Me.CmdClose.Location = New System.Drawing.Point(183, 361)
         Me.CmdClose.Name = "CmdClose"
         Me.CmdClose.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.CmdClose.Size = New System.Drawing.Size(81, 25)
@@ -380,7 +254,7 @@ Partial Class custstatement
         Me.Gbpar.Controls.Add(Me.Label1)
         Me.Gbpar.Controls.Add(Me.txtfrmcus)
         Me.Gbpar.Font = New System.Drawing.Font("Tahoma", 8.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.Gbpar.Location = New System.Drawing.Point(3, 104)
+        Me.Gbpar.Location = New System.Drawing.Point(3, 11)
         Me.Gbpar.Name = "Gbpar"
         Me.Gbpar.Size = New System.Drawing.Size(280, 83)
         Me.Gbpar.TabIndex = 61
@@ -392,7 +266,7 @@ Partial Class custstatement
         Me.GroupBox2.Controls.Add(Me.Rbsource)
         Me.GroupBox2.Controls.Add(Me.Rbfunc)
         Me.GroupBox2.Font = New System.Drawing.Font("Tahoma", 8.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.GroupBox2.Location = New System.Drawing.Point(5, 279)
+        Me.GroupBox2.Location = New System.Drawing.Point(5, 202)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(279, 62)
         Me.GroupBox2.TabIndex = 64
@@ -403,9 +277,7 @@ Partial Class custstatement
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(296, 503)
-        Me.Controls.Add(Me.GroupBox5)
-        Me.Controls.Add(Me.GroupBox4)
+        Me.ClientSize = New System.Drawing.Size(296, 391)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.DateTimePicker2)
         Me.Controls.Add(Me.DateTimePicker1)
@@ -417,10 +289,6 @@ Partial Class custstatement
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "custstatement"
         Me.Text = "Customer Statement"
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
@@ -432,17 +300,6 @@ Partial Class custstatement
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents Rbwsm As RadioButton
-    Friend WithEvents GroupBox5 As GroupBox
-    Friend WithEvents Rbwosm As RadioButton
-    Public WithEvents Butftosal As Button
-    Friend WithEvents Txttosalm As TextBox
-    Friend WithEvents Label5 As Label
-    Public WithEvents Butffrmsal As Button
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Txtfrmsalm As TextBox
-    Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents rbwtcw As RadioButton
     Friend WithEvents rbcw As RadioButton
     Friend WithEvents GroupBox3 As GroupBox

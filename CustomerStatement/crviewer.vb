@@ -7,6 +7,9 @@ Imports System.IO
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
+Imports acc = ACCPAC.Advantage
+
+
 
 Friend Class crviewer
     Private rdoc As New ReportDocument
@@ -46,7 +49,7 @@ Friend Class crviewer
     Friend Function Readconnectionstring() As String
 
         Dim secretkey As String = "Fhghqwjehqwlegtoit123mnk12%&4#"
-        Dim path As String = ("txtcon\akhcon.txt")
+        Dim path As String = ("txtcon\prucon.txt")
         Dim sr As New StreamReader(path)
 
         server = sr.ReadLine()
@@ -63,27 +66,24 @@ Friend Class crviewer
 
         Return cons
     End Function
-    Public Sub New(ByVal objectHandle As String, ByVal compid As String, ByVal rbfun As Boolean, ByVal rbsrc As Boolean, ByVal rbcw As Boolean, ByVal rbwcw As Boolean, ByVal fdate As String, ByVal tdate As String, ByVal frmsales As String, ByVal tosales As String, ByVal frmcust As String, ByVal tocust As String, ByVal wsalm As Boolean, ByVal wosalm As Boolean)
+    Public Sub New(ByVal _objectHandle As String, ByVal _sess As acc.Session, ByVal rbfun As Boolean, ByVal rbsrc As Boolean, ByVal rbcw As Boolean, ByVal rbwcw As Boolean, ByVal fdate As String, ByVal tdate As String, ByVal frmcust As String, ByVal tocust As String)
         InitializeComponent()
-        objectHandle = objectHandle
-        ccompid = compid
+        ObjectHandle = _objectHandle
+        ccompid = _sess.CompanyID
         crbfun = rbfun
         crbsrc = rbsrc
         crbcw = rbcw
         crbwcw = rbwcw
         cfdate = fdate
         ctdate = tdate
-        cfrmsales = frmsales
-        ctosales = tosales
         cfrmcust = frmcust
         ctocust = tocust
-        cwsalm = wsalm
-        cwosalm = wosalm
+
     End Sub
 
-    Public Sub New(ByVal objectHandle As String)
+    Public Sub New(ByVal _objectHandle As String)
         InitializeComponent()
-        objectHandle = objectHandle
+        ObjectHandle = _objectHandle
     End Sub
 
     Private Sub crviewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -107,9 +107,6 @@ Friend Class crviewer
                 rdoc.Load("reports\ARCUSTSURCRPTCw.rpt")
             End If
 
-
-
-
             Dim tabs As Tables = rdoc.Database.Tables
             Dim parv As New ParameterValues
             Dim dis As New ParameterDiscreteValue
@@ -118,17 +115,10 @@ Friend Class crviewer
 
 
 
-            Dim smonthly As String = ""
 
-            If cwsalm = True Then
-                smonthly = "Y"
-            Else
-                smonthly = "N"
-            End If
 
 
             Readconnectionstring()
-
 
 
             For Each TAB As CrystalDecisions.CrystalReports.Engine.Table In tabs
@@ -140,7 +130,6 @@ Friend Class crviewer
                 tablog.ConnectionInfo = conrpt
                 TAB.ApplyLogOnInfo(tablog)
             Next
-
 
             Dim sec As Section
             Dim secs As Sections
@@ -155,14 +144,18 @@ Friend Class crviewer
             Dim ConInfo As New CrystalDecisions.Shared.TableLogOnInfo
             Dim subConInfo As New ConnectionInfo
             For Each sec In secs
+
                 robs = sec.ReportObjects
+
                 For Each rob In robs
                     If rob.Kind = ReportObjectKind.SubreportObject Then
                         subrpobj = CType(rob, SubreportObject)
                         subrp = subrpobj.OpenSubreport(subrpobj.SubreportName)
+
                         Dim name As String = subrp.Name
 
-                        If subrp.Name = "salesperson.rpt" Then
+                        If subrp.Name = "CWRep" Then
+
                             crSubTables = subrp.Database.Tables
                             For Each crsubtable In crSubTables
                                 crtableLogoninfo = crsubtable.LogOnInfo
@@ -172,38 +165,16 @@ Friend Class crviewer
                                 subConInfo.Password = pass
                                 crtableLogoninfo.ConnectionInfo = subConInfo
                                 crsubtable.ApplyLogOnInfo(crtableLogoninfo)
-                            Next
-                        End If
 
-                        If subrp.Name = "CWRep.rpt" Then
-                            crSubTables = subrp.Database.Tables
-                            For Each crsubtable In crSubTables
-                                crtableLogoninfo = crsubtable.LogOnInfo
-                                subConInfo.ServerName = server
-                                subConInfo.DatabaseName = ccompid
-                                subConInfo.UserID = uid
-                                subConInfo.Password = pass
-                                crtableLogoninfo.ConnectionInfo = subConInfo
-                                crsubtable.ApplyLogOnInfo(crtableLogoninfo)
                             Next
                         End If
 
 
-                        If subrp.Name = "Salesmonthly" Then
-                            crSubTables = subrp.Database.Tables
-                            For Each crsubtable In crSubTables
-                                crtableLogoninfo = crsubtable.LogOnInfo
-                                subConInfo.ServerName = server
-                                subConInfo.DatabaseName = ccompid
-                                subConInfo.UserID = uid
-                                subConInfo.Password = pass
-                                crtableLogoninfo.ConnectionInfo = subConInfo
-                                crsubtable.ApplyLogOnInfo(crtableLogoninfo)
-                            Next
-                        End If
+
                     End If
 
                 Next
+
             Next
 
 
@@ -211,9 +182,9 @@ Friend Class crviewer
             rdoc.SetParameterValue("toyearper", ctdate)
             rdoc.SetParameterValue("Frmcus", cfrmcust)
             rdoc.SetParameterValue("TOcus", ctocust)
-            rdoc.SetParameterValue("Frmsal", cfrmsales)
-            rdoc.SetParameterValue("Tosal", ctocust)
-            rdoc.SetParameterValue("smonthly", smonthly)
+
+
+
 
             cwvr.ReportSource = rdoc
 
